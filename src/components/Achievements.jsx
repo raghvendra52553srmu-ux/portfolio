@@ -1,58 +1,72 @@
-import React from 'react';
-import { Trophy, CheckCircle2, Star } from 'lucide-react';
-import { ACHIEVEMENTS_DATA } from '../data/portfolioData';
+import React from "react";
+import { motion } from "framer-motion";
+import { Trophy, CheckCircle2, Flag, Sparkles, Terminal } from "lucide-react";
+import { ACHIEVEMENTS_DATA } from "../data/portfolioData";
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-16 md:py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-zinc-800">
-      
+    <section id="achievements" className="py-24 px-4 sm:px-6 max-w-7xl mx-auto scroll-mt-20">
       {/* Section Header */}
-      <div className="mb-10">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-          Hackathons &amp; Activities
+      <div className="mb-12 border-b border-zinc-800/80 pb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono mb-3">
+          <Trophy className="w-3.5 h-3.5" />
+          <span>VERIFIED MILESTONES</span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-100">
+          Hackathons &amp; Achievements
         </h2>
-        <p className="text-sm text-zinc-400 mt-1">
-          University hackathon involvement and technical milestones.
+        <p className="mt-2 text-zinc-400 text-sm sm:text-base max-w-2xl">
+          Verified university sprints, techfest competitions, and open-source milestones.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {/* Modern Achievement Timeline */}
+      <div className="relative pl-6 sm:pl-8 border-l border-zinc-800/90 space-y-10">
         {ACHIEVEMENTS_DATA.map((item, idx) => (
-          <div
+          <motion.div
             key={idx}
-            className="p-5 rounded-2xl bg-zinc-900/50 border border-zinc-800 flex flex-col justify-between"
+            initial={{ opacity: 0, x: -15 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.35, delay: idx * 0.1 }}
+            className="relative group"
           >
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">
-                  {item.badge}
+            {/* Visual timeline node marker */}
+            <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-zinc-950 border-2 border-sky-400 group-hover:scale-125 transition-transform shadow-[0_0_8px_rgba(56,189,248,0.4)]" />
+
+            {/* Achievement Card */}
+            <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700/80 transition-all">
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
+                <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-zinc-800 text-sky-400 border border-zinc-700">
+                  {item.year}
                 </span>
-                <span className="text-[11px] font-mono text-zinc-500">
-                  {item.period}
-                </span>
+
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-zinc-950 text-zinc-400 border border-zinc-800">
+                    Track: {item.track}
+                  </span>
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    {item.badge}
+                  </span>
+                </div>
               </div>
 
-              <h3 className="text-base font-bold text-white mb-1">
-                {item.title}
+              <h3 className="text-lg font-bold text-zinc-100 group-hover:text-white transition-colors mb-2">
+                {item.event}
               </h3>
 
-              <div className="text-xs text-cyan-400 font-mono mb-2.5">
-                {item.institution}
-              </div>
-
-              <p className="text-xs text-zinc-400 leading-relaxed">
-                {item.description}
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">
+                {item.action}
               </p>
-            </div>
 
-            <div className="mt-4 pt-3 border-t border-zinc-800 text-[11px] font-mono text-zinc-500 flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Verified Activity</span>
+              <div className="pt-3 border-t border-zinc-800/80 flex items-center gap-1.5 text-xs text-emerald-400 font-mono">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Verified Activity &amp; Participation</span>
+              </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-
     </section>
   );
 }

@@ -1,135 +1,127 @@
-import React from 'react';
-import { GraduationCap, Target, MapPin, Sparkles } from 'lucide-react';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import React from "react";
+import { GraduationCap, Target, MapPin, Compass, Sparkles, Code2 } from "lucide-react";
+import { PERSONAL_INFO } from "../data/portfolioData";
 
 export default function About() {
   const profileCards = [
     {
       title: "Education",
-      primary: "BCA (Bachelor of Computer Applications)",
-      secondary: "Shri Ramswaroop Memorial University (SRMU), Lucknow",
-      badge: "2025–2027",
+      value: "BCA — SRMU",
+      subtitle: "Shri Ramswaroop Memorial University",
       icon: GraduationCap,
     },
     {
-      title: "Current Focus",
-      primary: "Web Development & Data Analytics",
-      secondary: "React, Python, Power BI, SQL, and Excel",
-      badge: "Active",
+      title: "Focus",
+      value: "Development + Data Analytics",
+      subtitle: "Full-Stack Web & Analytical Workflows",
       icon: Target,
     },
     {
-      title: "Location",
-      primary: "Lucknow, Uttar Pradesh",
-      secondary: "Open to internships in Lucknow & remote opportunities",
-      badge: "India",
+      title: "Based in",
+      value: "Lucknow, India",
+      subtitle: "Open to Local & Remote Opportunities",
       icon: MapPin,
     },
     {
-      title: "Interests",
-      primary: "Hackathons & Building Tools",
-      secondary: "Turning theoretical concepts into working prototypes",
-      badge: "Builder",
-      icon: Sparkles,
-    }
+      title: "Learning Approach",
+      value: "Learning by building",
+      subtitle: "Practical Repositories & Real Problem Solving",
+      icon: Compass,
+    },
   ];
 
-  const developingSkills = [
-    "Python",
+  const interestTags = [
+    "Programming",
+    "Web Development",
+    "Data Analytics",
     "Power BI",
-    "Excel",
+    "Python",
     "SQL",
-    "JavaScript",
-    "React",
-    "HTML/CSS",
-    "Data Analytics"
+    "Problem Solving",
   ];
 
   return (
-    <section id="about" className="py-16 md:py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-zinc-800">
-      
+    <section id="about" className="py-24 px-4 sm:px-6 max-w-7xl mx-auto scroll-mt-20">
       {/* Section Header */}
-      <div className="mb-10">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-          About Me
+      <div className="mb-12 border-b border-zinc-800/80 pb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono mb-3">
+          <Code2 className="w-3.5 h-3.5" />
+          <span>BACKGROUND &amp; PHILOSOPHY</span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-100">
+          More than a student. A builder.
         </h2>
-        <p className="text-sm text-zinc-400 mt-1">
-          A quick background on who I am and what I work on.
+        <p className="mt-2 text-zinc-400 text-sm sm:text-base max-w-2xl">
+          Turning computer science concepts into tested software, interactive dashboards, and practical tools.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
-        {/* Left: Narrative text */}
-        <div className="lg:col-span-6 space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        {/* Left: Natural narrative */}
+        <div className="lg:col-span-7 space-y-5 text-zinc-300 text-sm sm:text-base leading-relaxed">
           <p>
-            I'm <strong className="text-white font-semibold">Raghvendra Pandey</strong>, currently pursuing my BCA at{' '}
-            <strong className="text-white font-semibold">Shri Ramswaroop Memorial University, Lucknow</strong>.
-          </p>
-          <p className="text-zinc-400">
-            Rather than sticking strictly to classroom theory, I learn best by building real software. 
-            My interests revolve around software development, frontend engineering with React, and data analytics 
-            using tools like Python, Power BI, and Excel.
-          </p>
-          <p className="text-zinc-400">
-            I regularly take part in university hackathons and tech events like SRMU VIVEKA. 
-            Collaborating with peers and building practical solutions under time limits has been one of the fastest ways 
-            I've improved my programming fundamentals and Git workflows.
+            I am pursuing my <strong className="text-zinc-100 font-semibold">Bachelor of Computer Applications (BCA)</strong> at{" "}
+            <strong className="text-zinc-100 font-semibold">Shri Ramswaroop Memorial University (SRMU), Lucknow</strong>. 
+            From the very start, I decided not to treat coding as purely theoretical homework. Instead, I choose to learn through practical, hands-on project building.
           </p>
 
-          {/* Currently Learning Chips */}
+          <p className="text-zinc-400">
+            My primary technical interests lie in <strong className="text-zinc-200">software &amp; web development</strong> and{" "}
+            <strong className="text-zinc-200">data analytics</strong>. I love constructing responsive web applications with React and JavaScript, 
+            while also digging into datasets with Python, SQL, Excel, and Microsoft Power BI to extract meaningful patterns and build actionable dashboards.
+          </p>
+
+          <p className="text-zinc-400">
+            Whether it is developing an OPD triage kiosk like <strong className="text-zinc-200">MediKiosk</strong> for hospital queues, 
+            prototyping student utility systems during university hackathons, or earning Grade A in Data Science with AI under Skill India &amp; IITM Pravartak, 
+            my goal remains consistent: build things that genuinely help people solve everyday operational problems.
+          </p>
+
+          {/* Interests row */}
           <div className="pt-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 block mb-2 font-medium">
-              Technologies I'm actively using &amp; learning:
+            <span className="text-xs font-mono uppercase tracking-wider text-zinc-500 block mb-2.5 font-medium">
+              Core Technical Interests:
             </span>
-            <div className="flex flex-wrap gap-1.5">
-              {developingSkills.map((skill) => (
+            <div className="flex flex-wrap gap-2">
+              {interestTags.map((interest) => (
                 <span
-                  key={skill}
-                  className="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300"
+                  key={interest}
+                  className="px-3 py-1 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300"
                 >
-                  {skill}
+                  {interest}
                 </span>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Right: 4 Clean Profile Cards */}
-        <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        {/* Right: Profile Information Panel */}
+        <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3.5">
           {profileCards.map((card, idx) => {
             const Icon = card.icon;
             return (
               <div
                 key={idx}
-                className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between"
+                className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/80 hover:border-zinc-700/80 transition-colors"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="p-2 rounded-lg bg-zinc-800 text-zinc-300">
-                      <Icon className="w-4 h-4" />
-                    </div>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700">
-                      {card.badge}
-                    </span>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 rounded-lg bg-zinc-800 text-sky-400">
+                    <Icon className="w-4 h-4" />
                   </div>
-
-                  <h3 className="text-xs font-mono uppercase tracking-wider text-zinc-400 mb-1">
+                  <span className="text-xs font-mono uppercase tracking-wider text-zinc-400">
                     {card.title}
-                  </h3>
-                  <p className="text-sm font-semibold text-white leading-snug">
-                    {card.primary}
-                  </p>
+                  </span>
                 </div>
-
-                <p className="text-xs text-zinc-400 leading-relaxed mt-2 pt-2 border-t border-zinc-800/80">
-                  {card.secondary}
-                </p>
+                <div className="text-sm font-semibold text-zinc-100 pl-11">
+                  {card.value}
+                </div>
+                <div className="text-xs text-zinc-400 pl-11 mt-0.5">
+                  {card.subtitle}
+                </div>
               </div>
             );
           })}
         </div>
-
       </div>
     </section>
   );
