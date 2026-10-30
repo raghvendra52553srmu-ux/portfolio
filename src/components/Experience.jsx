@@ -5,71 +5,72 @@ import { EXPERIENCE_DATA } from "../data/portfolioData";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 max-w-7xl mx-auto scroll-mt-20">
+    <section
+      id="experience"
+      aria-labelledby="experience-heading"
+      className="py-20 px-4 sm:px-6 max-w-6xl mx-auto scroll-mt-20 border-b border-[#e7e3da]"
+    >
       {/* Section Header */}
-      <div className="mb-12 border-b border-zinc-800/80 pb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono mb-3">
-          <Briefcase className="w-3.5 h-3.5" />
-          <span>PROFESSIONAL TIMELINE</span>
+      <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-12 gap-4 pb-6 border-b border-[#e7e3da]">
+        <div>
+          <span className="font-mono text-xs uppercase tracking-wider text-[#9e472a] block mb-2 font-medium">
+            04 / Timeline
+          </span>
+          <h2 id="experience-heading" className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 tracking-tight">
+            Experience &amp; Engineering Work
+          </h2>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-100">
-          Experience &amp; Practical Work
-        </h2>
-        <p className="mt-2 text-zinc-400 text-sm sm:text-base max-w-2xl">
-          Verified internship and application engineering history without exaggerated titles.
+        <p className="text-stone-500 text-xs sm:text-sm max-w-md font-sans leading-relaxed">
+          Verified internship and practical development history without exaggerated claims.
         </p>
       </div>
 
-      {/* Timeline */}
+      {/* Timeline entries */}
       <div className="space-y-6">
         {EXPERIENCE_DATA.map((exp, idx) => (
-          <motion.div
+          <article
             key={idx}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.35, delay: idx * 0.1 }}
-            className="p-6 sm:p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700/80 transition-all"
+            className="p-6 sm:p-8 rounded-xl bg-white border border-[#e7e3da] shadow-[0_1px_3px_rgba(0,0,0,0.02)]"
           >
             <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-zinc-800 text-sky-400 border border-zinc-700">
+              <div className="flex items-center gap-2.5">
+                <span className="font-mono text-xs font-semibold px-2.5 py-0.5 rounded bg-[#fbf4f0] text-[#9e472a] border border-[#f0ded5]">
                   {exp.year}
                 </span>
-                <span className="text-xs font-mono px-2.5 py-1 rounded bg-zinc-900 text-zinc-300 border border-zinc-800">
+                <span className="text-xs font-mono px-2 py-0.5 rounded bg-stone-100 text-stone-700 border border-stone-200">
                   {exp.type}
                 </span>
               </div>
-              <div className="flex items-center gap-1.5 text-xs text-zinc-500 font-mono">
-                <MapPin className="w-3.5 h-3.5 text-zinc-400" />
+              <div className="flex items-center gap-1.5 text-xs text-stone-500 font-mono">
+                <MapPin className="w-3.5 h-3.5 text-[#9e472a]" />
                 <span>{exp.location}</span>
               </div>
             </div>
 
-            <h3 className="text-xl font-bold text-zinc-100 mb-1">
+            <h3 className="font-serif text-xl sm:text-2xl font-normal text-stone-900 mb-1">
               {exp.role}
             </h3>
 
-            <div className="text-sm font-semibold text-zinc-300 mb-3">
+            <div className="text-xs font-mono text-stone-500 uppercase tracking-wider mb-4 font-semibold">
               {exp.organization}
             </div>
 
-            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-5 max-w-3xl">
+            <p className="text-sm text-stone-600 leading-relaxed mb-5 max-w-3xl">
               {exp.description}
             </p>
 
             {/* Bullets */}
             {(exp.points || exp.highlights) && (
-              <div className="space-y-2 pt-4 border-t border-zinc-800/80">
+              <div className="space-y-2 pt-4 border-t border-[#f0ece4]">
                 {(exp.points || exp.highlights).map((item, hIdx) => (
-                  <div key={hIdx} className="flex items-start gap-2.5 text-xs text-zinc-300">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0 mt-0.5" />
+                  <div key={hIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700">
+                    <CheckCircle2 className="w-4 h-4 text-[#9e472a] shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
             )}
-          </motion.div>
+          </article>
         ))}
       </div>
     </section>

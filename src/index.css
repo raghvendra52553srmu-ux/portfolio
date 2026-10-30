@@ -2,40 +2,55 @@
 
 @layer base {
   :root {
+    --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
+    --accent: #9e472a;
   }
 
   html {
     scroll-behavior: smooth;
+    background-color: #faf8f5;
   }
 
   body {
-    background-color: #09090b;
-    color: #e4e4e7;
+    background-color: #faf8f5;
+    color: #1c1917;
     font-family: var(--font-sans);
     overflow-x: hidden;
   }
 
   :focus-visible {
-    outline: 2px solid #38bdf8;
+    outline: 2px solid #9e472a;
     outline-offset: 2px;
   }
 
-  /* Clean subtle scrollbar */
+  /* Quiet editorial scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #09090b;
+    background: #faf8f5;
   }
   ::-webkit-scrollbar-thumb {
-    background: #27272a;
+    background: #d6d3cd;
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #3f3f46;
+    background: #b8b3aa;
   }
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
 }
 
 /* Accessibility: Reduced motion support */
@@ -50,25 +65,18 @@
   }
 }
 
-/* Minimal card & surface styling */
-.surface-card {
-  background: #121215;
-  border: 1px solid #27272a;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+/* Editorial card & rule styling */
+.editorial-border {
+  border-color: #e7e3da;
 }
 
-.surface-card:hover {
-  border-color: #3f3f46;
+.editorial-card {
+  background: #ffffff;
+  border: 1px solid #e7e3da;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.surface-card-hover {
-  background: #121215;
-  border: 1px solid #27272a;
-  transition: all 0.25s ease;
-}
-
-.surface-card-hover:hover {
-  border-color: #38bdf8;
-  background: #141418;
-  transform: translateY(-2px);
+.editorial-card:hover {
+  border-color: #9e472a;
+  box-shadow: 0 4px 20px -2px rgba(158, 71, 42, 0.08);
 }

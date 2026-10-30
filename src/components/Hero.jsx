@@ -1,150 +1,113 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { ArrowDown, Mail, Download, MapPin, GraduationCap } from "lucide-react";
+import { ArrowDown, MessageCircle, FileText } from "lucide-react";
 import { Github, Linkedin } from "./Icons";
 import { PERSONAL_INFO } from "../data/portfolioData";
-import profilePhoto from "../assets/profile.jpg";
 
 export default function Hero({ onOpenResume }) {
+  const whatsappUrl = `https://wa.me/${PERSONAL_INFO.whatsappNumber}?text=${encodeURIComponent(
+    PERSONAL_INFO.whatsappPrefilledMessage
+  )}`;
+
   return (
     <section
       id="home"
       aria-label="Introduction and overview"
-      className="pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      className="pt-28 pb-14 md:pt-36 md:pb-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-[#e7e3da]"
     >
-      {/* Brand Motto Banner */}
-      <div className="mb-6 flex items-center justify-start">
-        <span className="font-mono text-[11px] uppercase tracking-widest text-zinc-400 bg-zinc-900/90 px-3 py-1 rounded-full border border-zinc-800">
-          {PERSONAL_INFO.brandMotto}
-        </span>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-        {/* LEFT COLUMN: Clean Personal Pitch */}
-        <div className="lg:col-span-7 flex flex-col items-start">
-          {/* Availability Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-800 text-xs text-zinc-300 font-medium mb-6">
-            <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
-            <span>Open to Internships • Project Collaborations</span>
-          </div>
-
-          {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-100 tracking-tight leading-[1.12] mb-4">
-            Hi, I'm <span className="text-white">Raghvendra Pandey</span>.
-          </h1>
-
-          {/* Role Presentation */}
-          <p className="text-base sm:text-lg text-sky-400 font-semibold mb-4 tracking-tight">
-            BCA Student • Developer • Data Analytics Enthusiast
-          </p>
-
-          {/* Value Statement */}
-          <p className="text-sm sm:text-base text-zinc-300 leading-relaxed max-w-xl mb-8">
-            {PERSONAL_INFO.tagline}
-          </p>
-
-          {/* Clear Action Buttons: Viewing Work & Contacting Me */}
-          <div className="flex flex-wrap items-center gap-3.5 mb-10">
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-100 hover:bg-white text-zinc-950 font-semibold text-xs tracking-wide transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-            >
-              <span>View Selected Work</span>
-              <ArrowDown className="w-3.5 h-3.5" />
-            </a>
-
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-200 hover:text-white text-xs font-semibold tracking-wide transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-            >
-              <Mail className="w-3.5 h-3.5 text-sky-400" />
-              <span>Contact Me</span>
-            </a>
-
-            <button
-              onClick={onOpenResume}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-900/60 hover:bg-zinc-800/80 border border-zinc-800 text-zinc-300 hover:text-white text-xs font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-              title="Open Printable Resume"
-            >
-              <Download className="w-3.5 h-3.5 text-zinc-400" />
-              <span>Resume</span>
-            </button>
-
-            <div className="flex items-center gap-2 ml-1">
-              <a
-                href={PERSONAL_INFO.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-                title="GitHub Profile"
-                aria-label="Raghvendra Pandey GitHub"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href={PERSONAL_INFO.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
-                title="LinkedIn Profile"
-                aria-label="Raghvendra Pandey LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-
-          {/* Understated Info Strip */}
-          <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400 pt-4 border-t border-zinc-800/80">
-            <span className="flex items-center gap-1.5">
-              <GraduationCap className="w-3.5 h-3.5 text-sky-400" />
-              SRMU Lucknow (2025 – Present)
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-sky-400" />
-              Lucknow, India
-            </span>
-          </div>
+      <div className="max-w-4xl">
+        {/* Quiet metadata kicker */}
+        <div className="flex items-center gap-3 mb-6">
+          <span className="font-mono text-xs uppercase tracking-wider text-[#9e472a] font-medium">
+            Personal Portfolio &amp; Index
+          </span>
+          <span className="text-stone-300" aria-hidden="true">•</span>
+          <span className="text-xs text-stone-500 font-mono">
+            Raghvendra Pandey — Lucknow, India
+          </span>
         </div>
 
-        {/* RIGHT COLUMN: Authentic Professional Photo Frame */}
-        <div className="lg:col-span-5 flex justify-center items-center">
-          <div className="relative w-64 sm:w-72 md:w-80 aspect-square">
-            <div className="relative w-full h-full rounded-2xl bg-zinc-900 border border-zinc-700/70 p-2.5 shadow-2xl overflow-hidden group">
-              <div className="w-full h-full rounded-xl overflow-hidden bg-zinc-950">
-                <img
-                  src={profilePhoto}
-                  alt="Raghvendra Pandey - BCA Student and Developer"
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  loading="eager"
-                />
-              </div>
-            </div>
+        {/* Confident Editorial Headline */}
+        <h1 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal tracking-tight text-stone-900 leading-[1.18] mb-6">
+          Designing and engineering practical software, web systems, and data workflows through real projects.
+        </h1>
 
-            {/* University & City badge */}
-            <div className="absolute -bottom-3 right-4 px-3 py-1 rounded-lg bg-zinc-950 border border-zinc-700 text-[11px] font-mono text-zinc-300 shadow-lg">
-              SRMU • Lucknow
-            </div>
-          </div>
-        </div>
-      </div>
+        {/* Clear Restrained Context */}
+        <p className="text-base sm:text-lg text-stone-600 leading-relaxed font-sans max-w-2xl mb-8">
+          I'm a BCA student at <strong className="text-stone-900 font-semibold">Shri Ramswaroop Memorial University (SRMU), Lucknow</strong>. Rather than treating computer science purely as theoretical coursework, I focus on practical execution — building tools, writing code, and analyzing datasets.
+        </p>
 
-      {/* Factual Highlights */}
-      <div className="mt-14 pt-8 border-t border-zinc-800 grid grid-cols-2 md:grid-cols-4 gap-4">
-        {PERSONAL_INFO.highlights?.map((hl, idx) => (
-          <div
-            key={idx}
-            className="p-4 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700/80 transition-colors"
+        {/* Primary Actions: Viewing Work & WhatsApp / Contact */}
+        <div className="flex flex-wrap items-center gap-4 mb-12">
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#9e472a] hover:bg-[#853a21] text-white text-xs font-semibold tracking-wide transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9e472a] focus-visible:ring-offset-2"
           >
-            <div className="text-sm font-semibold text-zinc-200 font-mono">
-              {hl.title}
-            </div>
-            <div className="text-xs text-zinc-400 mt-1">
-              {hl.desc}
-            </div>
+            <span>View Selected Work</span>
+            <ArrowDown className="w-3.5 h-3.5" />
+          </a>
+
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-[#ffffff] hover:bg-stone-50 border border-[#e7e3da] text-stone-800 hover:text-[#9e472a] text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9e472a]"
+          >
+            <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+            <span>Chat on WhatsApp</span>
+          </a>
+
+          <button
+            onClick={onOpenResume}
+            className="inline-flex items-center gap-1.5 px-3 py-2 text-stone-600 hover:text-stone-900 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#9e472a] rounded"
+          >
+            <FileText className="w-3.5 h-3.5 text-stone-400" />
+            <span>Resume (PDF)</span>
+          </button>
+
+          <div className="flex items-center gap-3 ml-auto text-xs font-mono text-stone-500">
+            <a
+              href={PERSONAL_INFO.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-stone-900 transition-colors"
+            >
+              GitHub ↗
+            </a>
+            <span className="text-stone-300">/</span>
+            <a
+              href={PERSONAL_INFO.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-stone-900 transition-colors"
+            >
+              LinkedIn ↗
+            </a>
           </div>
-        ))}
+        </div>
+
+        {/* Factual Ledger Strip: Opening screen summary */}
+        <div className="pt-6 border-t border-[#e7e3da] grid grid-cols-2 md:grid-cols-4 gap-6 text-xs">
+          <div>
+            <div className="font-mono text-[10px] uppercase text-stone-400 mb-1">Status</div>
+            <div className="font-medium text-stone-800">BCA (2025 – Present)</div>
+            <div className="text-stone-500 text-[11px]">SRMU Lucknow</div>
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase text-stone-400 mb-1">Focus</div>
+            <div className="font-medium text-stone-800">Full-Stack &amp; Analytics</div>
+            <div className="text-stone-500 text-[11px]">React, Python, SQL, Power BI</div>
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase text-stone-400 mb-1">Built Works</div>
+            <div className="font-medium text-stone-800">5 Active Repositories</div>
+            <div className="text-stone-500 text-[11px]">MediKiosk, Gurukul, Tools</div>
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase text-stone-400 mb-1">Certification</div>
+            <div className="font-medium text-stone-800">Data Science with AI</div>
+            <div className="text-stone-500 text-[11px]">IITM Pravartak • Grade A</div>
+          </div>
+        </div>
       </div>
     </section>
   );

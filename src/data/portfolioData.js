@@ -22,6 +22,9 @@ export const PERSONAL_INFO = {
   github: "https://github.com/raghvendra52553srmu-ux",
   linkedin: "https://www.linkedin.com/in/raghvendra-pandey-85144b387/",
   email: "raghvendra.contact.dev@gmail.com",
+  whatsappNumber: "919250776242",
+  phoneDisplay: "+91 92507 76242",
+  whatsappPrefilledMessage: "Hi Raghvendra, I saw your portfolio and would like to talk with you.",
   highlights: [
     { title: "BCA Student", desc: "SRMU Lucknow" },
     { title: "Project Builder", desc: "5+ Built Works" },

@@ -16,33 +16,32 @@ export default function Certificates() {
       : CERTIFICATES_DATA.filter((cert) => cert.category === activeCategory);
 
   return (
-    <section id="certificates" className="py-24 px-4 sm:px-6 max-w-7xl mx-auto scroll-mt-20">
+    <section
+      id="certificates"
+      aria-labelledby="certificates-heading"
+      className="py-20 px-4 sm:px-6 max-w-6xl mx-auto scroll-mt-20 border-b border-[#e7e3da]"
+    >
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-zinc-800/80 pb-8">
+      <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-12 gap-4 pb-6 border-b border-[#e7e3da]">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono mb-3">
-            <Award className="w-3.5 h-3.5" />
-            <span>VERIFIED CREDENTIALS</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-100">
-            Certificates &amp; Learning
+          <span className="font-mono text-xs uppercase tracking-wider text-[#9e472a] block mb-2 font-medium">
+            05 / Credentials
+          </span>
+          <h2 id="certificates-heading" className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 tracking-tight">
+            Certifications &amp; Credentials
           </h2>
-          <p className="mt-2 text-zinc-400 text-sm sm:text-base max-w-2xl">
-            Real certifications and competition credentials validated by IITM Pravartak, Skill India,
-            Shri Ramswaroop Memorial University, and the Ministry of Youth Affairs.
-          </p>
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`px-3 py-1 rounded text-xs font-mono transition-colors ${
                 activeCategory === cat
-                  ? "bg-zinc-100 text-zinc-950 shadow-sm"
-                  : "bg-zinc-900/80 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 border border-zinc-800"
+                  ? "bg-stone-900 text-white font-medium"
+                  : "bg-white text-stone-600 hover:text-stone-900 border border-[#e7e3da]"
               }`}
             >
               {cat}
@@ -52,21 +51,17 @@ export default function Certificates() {
       </div>
 
       {/* Grid of Certificates */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filteredCerts.map((cert, index) => (
-          <motion.div
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+        {filteredCerts.map((cert) => (
+          <article
             key={cert.id}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.35, delay: index * 0.08 }}
-            className="group relative bg-zinc-900/40 hover:bg-zinc-900/70 border border-zinc-800/80 hover:border-zinc-700/90 rounded-2xl p-5 sm:p-6 transition-all duration-200 flex flex-col justify-between"
+            className="group rounded-xl bg-white border border-[#e7e3da] hover:border-[#9e472a]/60 p-5 sm:p-6 transition-all shadow-[0_1px_3px_rgba(0,0,0,0.02)] flex flex-col justify-between"
           >
             <div>
               {/* Image Preview Container */}
               <div
                 onClick={() => setSelectedCert(cert)}
-                className="relative cursor-pointer aspect-[16/10] overflow-hidden rounded-xl bg-zinc-950 border border-zinc-800/90 mb-5 group-hover:border-sky-500/30 transition-all"
+                className="relative cursor-pointer aspect-[16/10] overflow-hidden rounded-lg bg-stone-100 border border-[#e7e3da] mb-5 group-hover:border-[#9e472a]/40 transition-colors"
               >
                 <img
                   src={cert.image}
@@ -74,51 +69,48 @@ export default function Certificates() {
                   className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                 />
-                {/* Overlay hover prompt */}
-                <div className="absolute inset-0 bg-zinc-950/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-medium text-xs">
-                  <span className="px-3 py-1.5 rounded-lg bg-zinc-900/90 border border-white/20 shadow-lg flex items-center gap-1.5">
-                    <Eye className="w-3.5 h-3.5 text-sky-400" /> Click to View Fullscreen
+                <div className="absolute inset-0 bg-stone-950/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">
+                  <span className="px-3 py-1.5 rounded bg-stone-900/90 shadow flex items-center gap-1.5">
+                    <Eye className="w-3.5 h-3.5" /> Fullscreen View
                   </span>
                 </div>
 
-                {/* Badge top-right */}
-                <div className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 rounded-md bg-zinc-950/85 backdrop-blur border border-zinc-700/60 text-[11px] font-mono text-zinc-300">
-                  <Calendar className="w-3 h-3 text-sky-400" />
+                <div className="absolute top-2.5 right-2.5 px-2.5 py-1 rounded bg-white/90 border border-stone-200 text-[11px] font-mono text-stone-700 shadow-sm">
                   {cert.date}
                 </div>
               </div>
 
               {/* Title & Organization */}
-              <div className="flex items-start justify-between gap-3 mb-2">
-                <h3 className="text-lg font-semibold text-zinc-100 group-hover:text-sky-300 transition-colors leading-snug">
+              <div className="flex items-start justify-between gap-3 mb-1.5">
+                <h3 className="font-serif text-lg font-medium text-stone-900 group-hover:text-[#9e472a] transition-colors leading-snug">
                   {cert.title}
                 </h3>
                 {cert.grade && (
-                  <span className="shrink-0 px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                  <span className="shrink-0 px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-[#fbf4f0] text-[#9e472a] border border-[#f0ded5]">
                     {cert.grade}
                   </span>
                 )}
               </div>
 
-              <p className="text-xs font-medium text-zinc-300 mb-1">
+              <p className="text-xs font-medium text-stone-800 mb-0.5">
                 {cert.issuer}
               </p>
               {cert.issuerSubtitle && (
-                <p className="text-[11px] text-zinc-400 mb-3">
+                <p className="text-[11px] text-stone-500 mb-3 font-mono">
                   {cert.issuerSubtitle}
                 </p>
               )}
 
-              <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+              <p className="text-xs text-stone-600 leading-relaxed mb-4">
                 {cert.description}
               </p>
 
               {/* Highlight chips */}
-              <div className="flex flex-wrap gap-1.5 mb-6">
+              <div className="flex flex-wrap gap-1.5 mb-5">
                 {cert.highlights?.map((hl, i) => (
                   <span
                     key={i}
-                    className="text-[11px] font-mono text-zinc-400 bg-zinc-800/60 px-2 py-0.5 rounded border border-zinc-700/40"
+                    className="text-[11px] font-mono text-stone-600 bg-[#f5f2eb] px-2 py-0.5 rounded border border-[#e7e3da]"
                   >
                     {hl}
                   </span>
@@ -127,21 +119,21 @@ export default function Certificates() {
             </div>
 
             {/* Bottom Row Actions */}
-            <div className="pt-4 border-t border-zinc-800/80 flex items-center justify-between">
-              <div className="inline-flex items-center gap-1.5 text-[11px] text-emerald-400">
-                <CheckCircle2 className="w-3.5 h-3.5" />
+            <div className="pt-3.5 border-t border-[#f0ece4] flex items-center justify-between">
+              <div className="inline-flex items-center gap-1.5 text-[11px] text-emerald-700 font-mono">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                 <span>Verified Credential</span>
               </div>
 
               <button
                 onClick={() => setSelectedCert(cert)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-200 bg-zinc-800/80 hover:bg-zinc-700 border border-zinc-700 hover:text-white transition-all"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-medium text-stone-700 bg-stone-100 hover:bg-stone-200 border border-stone-200 transition-colors"
               >
-                <Eye className="w-3.5 h-3.5" />
-                <span>View Certificate</span>
+                <Eye className="w-3.5 h-3.5 text-[#9e472a]" />
+                <span>View Full Certificate</span>
               </button>
             </div>
-          </motion.div>
+          </article>
         ))}
       </div>
 

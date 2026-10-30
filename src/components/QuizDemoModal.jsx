@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { X, CheckCircle2, AlertCircle, RotateCcw, Terminal } from 'lucide-react';
 import { SAMPLE_QUIZ_QUESTIONS } from '../data/portfolioData';
 
@@ -43,20 +42,19 @@ export default function QuizDemoModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="w-full max-w-lg rounded-2xl bg-zinc-900 border border-zinc-800 shadow-2xl p-6 relative">
-        
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-sm">
+      <div className="w-full max-w-lg rounded-xl bg-white border border-[#e7e3da] shadow-2xl p-6 relative">
         {/* Modal Header */}
-        <div className="flex items-center justify-between pb-4 mb-5 border-b border-zinc-800">
+        <div className="flex items-center justify-between pb-4 mb-5 border-b border-[#e7e3da]">
           <div className="flex items-center gap-2">
-            <Terminal className="w-4 h-4 text-zinc-400" />
-            <h3 className="text-sm font-semibold text-white">
-              Python Quiz Game — Live Demo
+            <Terminal className="w-4 h-4 text-[#9e472a]" />
+            <h3 className="text-sm font-semibold text-stone-900 font-sans">
+              Python Quiz Game — Interactive Demo
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded text-zinc-400 hover:text-white"
+            className="p-1 rounded text-stone-400 hover:text-stone-900"
           >
             <X className="w-4 h-4" />
           </button>
@@ -65,14 +63,14 @@ export default function QuizDemoModal({ isOpen, onClose }) {
         {/* Quiz Body */}
         {!quizFinished ? (
           <div>
-            <div className="flex items-center justify-between text-xs font-mono text-zinc-400 mb-2.5">
+            <div className="flex items-center justify-between text-xs font-mono text-stone-500 mb-2.5">
               <span>Question {currentIdx + 1} of {SAMPLE_QUIZ_QUESTIONS.length}</span>
               <span>Score: {score}</span>
             </div>
 
             {/* Question Text */}
-            <div className="p-4 rounded-xl bg-zinc-950 border border-zinc-800 mb-4">
-              <p className="text-sm font-medium text-zinc-100">
+            <div className="p-4 rounded-lg bg-[#faf8f5] border border-[#eeebe3] mb-4">
+              <p className="text-sm font-medium text-stone-900 font-serif">
                 {currentQ.question}
               </p>
             </div>
@@ -80,15 +78,15 @@ export default function QuizDemoModal({ isOpen, onClose }) {
             {/* Options */}
             <div className="space-y-2 mb-5">
               {currentQ.options.map((opt, optIdx) => {
-                let btnStyle = "bg-zinc-950 border-zinc-800 text-zinc-300 hover:border-zinc-700";
+                let btnStyle = "bg-white border-[#eeebe3] text-stone-700 hover:border-stone-400";
 
                 if (isAnswered) {
                   if (optIdx === currentQ.correct) {
-                    btnStyle = "bg-emerald-950/80 border-emerald-700 text-emerald-300";
+                    btnStyle = "bg-emerald-50 border-emerald-300 text-emerald-900 font-semibold";
                   } else if (optIdx === selectedOption) {
-                    btnStyle = "bg-rose-950/80 border-rose-700 text-rose-300";
+                    btnStyle = "bg-rose-50 border-rose-300 text-rose-900";
                   } else {
-                    btnStyle = "bg-zinc-950 border-zinc-900 text-zinc-600 opacity-60";
+                    btnStyle = "bg-stone-50 border-stone-200 text-stone-400 opacity-60";
                   }
                 }
 
@@ -97,14 +95,14 @@ export default function QuizDemoModal({ isOpen, onClose }) {
                     key={optIdx}
                     onClick={() => handleSelectOption(optIdx)}
                     disabled={isAnswered}
-                    className={`w-full p-3 rounded-lg border text-left text-xs sm:text-sm font-medium transition-all flex items-center justify-between ${btnStyle}`}
+                    className={`w-full p-3 rounded-lg border text-left text-xs sm:text-sm font-sans transition-all flex items-center justify-between ${btnStyle}`}
                   >
                     <span>{opt}</span>
                     {isAnswered && optIdx === currentQ.correct && (
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                     )}
                     {isAnswered && optIdx === selectedOption && optIdx !== currentQ.correct && (
-                      <AlertCircle className="w-4 h-4 text-rose-400" />
+                      <AlertCircle className="w-4 h-4 text-rose-600" />
                     )}
                   </button>
                 );
@@ -113,8 +111,8 @@ export default function QuizDemoModal({ isOpen, onClose }) {
 
             {/* Explanation when answered */}
             {isAnswered && (
-              <div className="p-3 rounded-lg bg-zinc-950 border border-zinc-800 text-xs text-zinc-300 mb-4">
-                <span className="font-semibold text-zinc-100">Explanation: </span>
+              <div className="p-3 rounded-lg bg-[#faf8f5] border border-[#eeebe3] text-xs text-stone-700 mb-4 font-sans">
+                <span className="font-semibold text-stone-900">Explanation: </span>
                 {currentQ.explanation}
               </div>
             )}
@@ -123,7 +121,7 @@ export default function QuizDemoModal({ isOpen, onClose }) {
             {isAnswered && (
               <button
                 onClick={handleNext}
-                className="w-full py-2.5 rounded-lg bg-zinc-100 hover:bg-white text-zinc-950 font-semibold text-xs transition-colors"
+                className="w-full py-2.5 rounded-lg bg-stone-900 hover:bg-stone-800 text-white font-medium text-xs transition-colors"
               >
                 {currentIdx + 1 < SAMPLE_QUIZ_QUESTIONS.length ? 'Next Question' : 'View Results'}
               </button>
@@ -132,22 +130,22 @@ export default function QuizDemoModal({ isOpen, onClose }) {
         ) : (
           /* Finished State */
           <div className="text-center py-6">
-            <h4 className="text-lg font-bold text-white mb-2">Quiz Completed</h4>
-            <p className="text-sm text-zinc-400 mb-6">
-              You scored <span className="text-white font-bold">{score}</span> out of{' '}
-              <span className="text-white font-bold">{SAMPLE_QUIZ_QUESTIONS.length}</span>.
+            <h4 className="font-serif text-xl text-stone-900 mb-2">Quiz Completed</h4>
+            <p className="text-sm text-stone-600 mb-6 font-sans">
+              You scored <span className="text-stone-900 font-bold">{score}</span> out of{' '}
+              <span className="text-stone-900 font-bold">{SAMPLE_QUIZ_QUESTIONS.length}</span>.
             </p>
             <div className="flex items-center gap-3 justify-center">
               <button
                 onClick={handleRestart}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-medium"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-medium border border-stone-200"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Try Again</span>
               </button>
               <button
                 onClick={onClose}
-                className="px-4 py-2 rounded-lg bg-zinc-100 hover:bg-white text-zinc-950 text-xs font-semibold"
+                className="px-4 py-2 rounded-lg bg-stone-900 hover:bg-stone-800 text-white text-xs font-medium"
               >
                 Close
               </button>

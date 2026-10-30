@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Projects from "./components/Projects";
 import About from "./components/About";
 import Skills from "./components/Skills";
-import LearningJourney from "./components/LearningJourney";
-import Projects from "./components/Projects";
-import Certificates from "./components/Certificates";
 import Experience from "./components/Experience";
-import Achievements from "./components/Achievements";
 import Education from "./components/Education";
+import Certificates from "./components/Certificates";
+import Achievements from "./components/Achievements";
 import GitHubSection from "./components/GitHubSection";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -18,50 +17,47 @@ export default function App() {
   const [resumeOpen, setResumeOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-sky-500/20 selection:text-sky-300">
-      {/* Sticky Top Navbar */}
+    <div className="min-h-screen bg-[#faf8f5] text-stone-900 font-sans antialiased selection:bg-[#9e472a]/15 selection:text-[#9e472a]">
+      {/* Editorial Sticky Navbar */}
       <Navbar onOpenResume={() => setResumeOpen(true)} />
 
-      {/* Main Sections in strict 2026 Visual Hierarchy */}
+      {/* Main Content Flow: Selected Work Upfront */}
       <main className="relative">
-        {/* 1. PHOTO + NAME + BRAND MOTTO */}
+        {/* 1. HERO — Headline, Editorial Ledger, Direct WhatsApp & Projects CTAs */}
         <Hero onOpenResume={() => setResumeOpen(true)} />
 
-        {/* 2. MY STORY */}
-        <About />
-
-        {/* 3. MY SKILLS */}
-        <Skills />
-
-        {/* 4. LEARNING JOURNEY (What I'm Learning) */}
-        <LearningJourney />
-
-        {/* 5. MY BEST PROJECTS (01 MediKiosk featured & detailed modals) */}
+        {/* 2. SELECTED WORK — Featured Case Studies & Repositories Upfront */}
         <Projects />
 
-        {/* 6. MY CERTIFICATES (Verified credentials & fullscreen lightbox) */}
-        <Certificates />
+        {/* 3. ABOUT — Authentic Narrative & Genuine Portrait */}
+        <About />
 
-        {/* 7. EXPERIENCE */}
+        {/* 4. SKILLS — Curated Areas of Technical Capability */}
+        <Skills />
+
+        {/* 5. EXPERIENCE — Practical Roles & Real Technical Delivery */}
         <Experience />
 
-        {/* 8. ACHIEVEMENTS & HACKATHONS */}
-        <Achievements />
-
-        {/* 9. EDUCATION (SRMU BCA) */}
+        {/* 6. EDUCATION — SRMU BCA Degree & Technical Coursework */}
         <Education />
 
-        {/* 10. GITHUB (Building in Public) */}
+        {/* 7. CERTIFICATES — Verified Credentials & Lightbox Viewer */}
+        <Certificates />
+
+        {/* 8. ACHIEVEMENTS — University Hackathons & Milestones */}
+        <Achievements />
+
+        {/* 9. GITHUB — Public Repositories & Building in Public */}
         <GitHubSection />
 
-        {/* 11. CONTACT (Let's build something useful) */}
+        {/* 10. CONTACT / WHATSAPP — Direct WhatsApp Contact (9250776242) */}
         <Contact />
       </main>
 
-      {/* Footer */}
+      {/* Editorial Footer */}
       <Footer />
 
-      {/* Resume Viewer / Downloader Modal */}
+      {/* Printable / Viewable Editorial Resume Modal */}
       <ResumeModal
         isOpen={resumeOpen}
         onClose={() => setResumeOpen(false)}
