@@ -140,7 +140,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Recruiter / Collaborator Name"
-                className="w-full px-4 py-3 rounded-xl bg-zinc-950/80 border border-zinc-800 focus:border-sky-500/60 text-sm text-zinc-100 placeholder-zinc-600 outline-none transition-colors"
+                className="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition-colors"
               />
             </div>
 
@@ -156,7 +156,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="colleague@organization.com"
-                className="w-full px-4 py-3 rounded-xl bg-zinc-950/80 border border-zinc-800 focus:border-sky-500/60 text-sm text-zinc-100 placeholder-zinc-600 outline-none transition-colors"
+                className="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition-colors"
               />
             </div>
 
@@ -172,14 +172,14 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Hi Raghvendra, I saw your work on MediKiosk and your data analytics certifications..."
-                className="w-full px-4 py-3 rounded-xl bg-zinc-950/80 border border-zinc-800 focus:border-sky-500/60 text-sm text-zinc-100 placeholder-zinc-600 outline-none transition-colors resize-none"
+                className="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-zinc-800 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition-colors resize-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="w-full py-3 px-5 rounded-xl bg-zinc-100 hover:bg-white text-zinc-950 font-semibold text-xs transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 px-5 rounded-xl bg-zinc-100 hover:bg-white text-zinc-950 font-semibold text-xs transition-colors flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
             >
               {status === "submitting" ? (
                 <span>Sending Message...</span>

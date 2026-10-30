@@ -17,6 +17,11 @@
     overflow-x: hidden;
   }
 
+  :focus-visible {
+    outline: 2px solid #38bdf8;
+    outline-offset: 2px;
+  }
+
   /* Clean subtle scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
@@ -30,6 +35,18 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #3f3f46;
+  }
+}
+
+/* Accessibility: Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -51,7 +68,7 @@
 }
 
 .surface-card-hover:hover {
-  border-color: #06b6d4;
+  border-color: #38bdf8;
   background: #141418;
   transform: translateY(-2px);
 }
